@@ -12,13 +12,17 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public final class ImageUtils {
 
     // http://www.omdbapi.com/
+    // private static final String OMDB_API_KEY = "eae28ad8";
     private static final String OMDB_API_KEY = "21ef9ee4";
     private static final String OMDB_BASE_URL = "http://www.omdbapi.com/";
     private static final String POSTER_KEY = "Poster";
 
     public static String getOMDBImageUrl(String title, int releaseYear) {
         try {
-            final String url = OMDB_BASE_URL +  "?apikey=" + OMDB_API_KEY + "&t=" + title.replaceAll(" ", "+") + "&y=" + releaseYear;
+            String t = title
+                    .replaceAll("\"", "")
+                    .replaceAll(" ", "+");
+            final String url = OMDB_BASE_URL +  "?apikey=" + OMDB_API_KEY + "&t=" + t + "&y=" + releaseYear;
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI(url))
@@ -30,11 +34,11 @@ public final class ImageUtils {
 
             String body = response.body();
             if (isNotBlank(body)) {
-                return new JSONObject(body).getString(POSTER_KEY);
+                return new JSONObject(body).optString(POSTER_KEY);
             }
         }
         catch (Throwable t) {
-            t.printStackTrace();
+            System.out.println(String.format("No image available for movie '%s' (%s) due to : " + t.getMessage(), title, releaseYear));
         }
 
         return null;

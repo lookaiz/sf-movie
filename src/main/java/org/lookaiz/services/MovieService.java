@@ -48,6 +48,7 @@ public class MovieService implements IMovieService {
 
 
     private List<Movie> readMoviesFromJSON(String filename) {
+        System.out.println("Start loading movies...");
         Instant start = Instant.now();
         List<Movie> tmpMovies = new ArrayList<>();
         try {
