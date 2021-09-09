@@ -2,9 +2,15 @@ package org.lookaiz.entities;
 
 import java.util.Objects;
 
+/**
+ * Movie DTO
+ */
 public class Movie {
 
     //Title,Release Year,Locations,Fun Facts,Production Company,Distributor,Director,Writer,Actor 1,Actor 2,Actor 3
+
+    // technical unique identifier
+    private Integer _id;
 
     private String title;
     private Integer releaseYear;
@@ -18,11 +24,14 @@ public class Movie {
     private String actor2;
     private String actor3;
 
+    private String posterUrl;
+
     public Movie() {
         super();
     }
 
-    public Movie(String title, Integer releaseYear, String locations, String funFacts, String productionCompany, String distributor, String director, String writer, String actor1, String actor2, String actor3) {
+    public Movie(Integer _id, String title, Integer releaseYear, String locations, String funFacts, String productionCompany, String distributor, String director, String writer, String actor1, String actor2, String actor3) {
+        this._id = _id;
         this.title = title;
         this.releaseYear = releaseYear;
         this.locations = locations;
@@ -36,10 +45,13 @@ public class Movie {
         this.actor3 = actor3;
     }
 
+    public Integer getId() {
+        return _id;
+    }
+
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -47,7 +59,6 @@ public class Movie {
     public Integer getReleaseYear() {
         return releaseYear;
     }
-
     public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
@@ -55,7 +66,6 @@ public class Movie {
     public String getLocations() {
         return locations;
     }
-
     public void setLocations(String locations) {
         this.locations = locations;
     }
@@ -63,7 +73,6 @@ public class Movie {
     public String getFunFacts() {
         return funFacts;
     }
-
     public void setFunFacts(String funFacts) {
         this.funFacts = funFacts;
     }
@@ -71,7 +80,6 @@ public class Movie {
     public String getProductionCompany() {
         return productionCompany;
     }
-
     public void setProductionCompany(String productionCompany) {
         this.productionCompany = productionCompany;
     }
@@ -79,7 +87,6 @@ public class Movie {
     public String getDistributor() {
         return distributor;
     }
-
     public void setDistributor(String distributor) {
         this.distributor = distributor;
     }
@@ -87,7 +94,6 @@ public class Movie {
     public String getDirector() {
         return director;
     }
-
     public void setDirector(String director) {
         this.director = director;
     }
@@ -95,7 +101,6 @@ public class Movie {
     public String getWriter() {
         return writer;
     }
-
     public void setWriter(String writer) {
         this.writer = writer;
     }
@@ -103,7 +108,6 @@ public class Movie {
     public String getActor1() {
         return actor1;
     }
-
     public void setActor1(String actor1) {
         this.actor1 = actor1;
     }
@@ -111,7 +115,6 @@ public class Movie {
     public String getActor2() {
         return actor2;
     }
-
     public void setActor2(String actor2) {
         this.actor2 = actor2;
     }
@@ -119,9 +122,16 @@ public class Movie {
     public String getActor3() {
         return actor3;
     }
-
     public void setActor3(String actor3) {
         this.actor3 = actor3;
+    }
+
+    public String getPosterUrl() {
+        return posterUrl;
+    }
+
+    public void setPosterUrl(String posterUrl) {
+        this.posterUrl = posterUrl;
     }
 
     @Override
